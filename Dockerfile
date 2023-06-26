@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-RUN echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" |  tee /etc/apt/sources.list.d/devel-kubic-libcontainers-stable.list
-RUN command curl -Ls https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_20.04/Release.key |  apt-key add -
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get upgrade -y
@@ -16,6 +14,11 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommend
     jq \
     lsb-release \
     software-properties-common
+
+RUN echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" |  tee /etc/apt/sources.list.d/devel-kubic-libcontainers-stable.list
+RUN command curl -Ls https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_20.04/Release.key |  apt-key add -
+RUN apt install buildah -y
+
 
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
