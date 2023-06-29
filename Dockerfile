@@ -13,13 +13,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommend
     iputils-ping \
     jq \
     lsb-release \
-    software-properties-common \
-    gpg-agent
+    software-properties-common
 
-RUN echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" |  tee /etc/apt/sources.list.d/devel-kubic-libcontainers-stable.list
-RUN curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_20.04/Release.key | apt-key --keyring /etc/apt/trusted.gpg.d/buildah-apt-key.gpg add
+#RUN echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_20.04/ /" |  tee /etc/apt/sources.list.d/devel-kubic-libcontainers-stable.list
+#RUN curl -fsSL https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_20.04/Release.key | apt-key --keyring /etc/apt/trusted.gpg.d/buildah-apt-key.gpg add
 
-RUN apt update -y && apt install buildah -y
+#RUN apt update -y && apt install buildah -y
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
 # Can be 'linux-x64', 'linux-arm64', 'linux-arm', 'rhel.6-x64'.
